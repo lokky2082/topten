@@ -16,12 +16,18 @@ func Top(str string) PairList {
 			counts[word] = 1
 		}
 	}
-  var sorted PairList = sortkv(counts);
+	var sorted PairList = sortkv(counts);
+	var limited PairList
 	for i, v := range sorted {
+		if(i < 11) {
+			limited = append(limited, v)
+		}
 		fmt.Printf("index %d, value %d \n", i, v)
   }
-  
-	return sorted
+  for i, v := range limited {
+		fmt.Printf("index %d, value %d \n", i, v)
+  }
+	return limited
 }
 type keyValue struct {
 	Key   string
