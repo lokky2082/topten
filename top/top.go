@@ -1,9 +1,10 @@
 package top
+
 import (
-	"strings"
-	"fmt"
 	"sort"
+	"strings"
 )
+
 // Top count top 10 words
 func Top(str string) PairList {
 	words := strings.Fields(str)
@@ -11,29 +12,27 @@ func Top(str string) PairList {
 	for _, word := range words {
 		_, inlist := counts[word]
 		if inlist {
-			counts[word] ++
+			counts[word]++
 		} else {
 			counts[word] = 1
 		}
 	}
-	var sorted PairList = sortkv(counts);
+	var sorted PairList = sortkv(counts)
 	var limited PairList
 	for i, v := range sorted {
-		if(i < 11) {
+		if i < 11 {
 			limited = append(limited, v)
 		}
-		fmt.Printf("index %d, value %d \n", i, v)
-  }
-  for i, v := range limited {
-		fmt.Printf("index %d, value %d \n", i, v)
-  }
+	}
 	return limited
 }
+
 type keyValue struct {
 	Key   string
 	Value int
 }
-// PairList dddd
+
+// PairList
 type PairList []keyValue
 
 func sortkv(list map[string]int) PairList {
